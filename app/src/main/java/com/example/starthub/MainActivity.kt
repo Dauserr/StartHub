@@ -7,6 +7,8 @@ import androidx.activity.enableEdgeToEdge
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Surface
 import com.example.starthub.ui.screens.MainScreen
+import androidx.compose.runtime.*
+import com.example.starthub.ui.screens.auth.AuthNavigation
 
 class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -15,9 +17,23 @@ class MainActivity : ComponentActivity() {
         setContent {
             MaterialTheme {
                 Surface {
-                    MainScreen()
+                    AppNavigation()
                 }
             }
         }
+    }
+}
+@Composable
+fun AppNavigation() {
+    var isAuthenticated by remember { mutableStateOf(false) }
+
+    if (isAuthenticated) {
+        MainScreen()
+    } else {
+        AuthNavigation(
+            onAuthSuccess = {
+                isAuthenticated = true
+            }
+        )
     }
 }

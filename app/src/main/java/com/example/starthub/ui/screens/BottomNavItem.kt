@@ -16,3 +16,9 @@ sealed class BottomNavItem(val route: String,
     object Profile : BottomNavItem("profile", "Profile", Icons.Default.Person)
 
 }
+
+sealed class AuthRoute(val route: String) {
+    object SignIn : AuthRoute("sign_in")
+    object SignUp : AuthRoute("sign_up")
+    object ForgotPassword : AuthRoute("forgot_password")
+}
