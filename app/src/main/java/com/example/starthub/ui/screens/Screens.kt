@@ -26,12 +26,12 @@ fun CatalogueScreen(){
     }
 }
 
-@Composable
-fun ProfileScreen(){
-    Box(
-        modifier = Modifier.fillMaxSize(),
-        contentAlignment = Alignment.Center
-    ) {
-        Text(text = "Profile Screen", style = MaterialTheme.typography.headlineMedium)
-    }
-}
+//@Composable
+//fun ProfileScreen(){
+//    Box(
+//        modifier = Modifier.fillMaxSize(),
+//        contentAlignment = Alignment.Center
+//    ) {
+//        Text(text = "Profile Screen", style = MaterialTheme.typography.headlineMedium)
+//    }
+//}
