@@ -6,9 +6,12 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.example.starthub.data.remote.api.RetrofitClient
 import com.example.starthub.data.remote.dto.LoginRequest
+import com.example.starthub.data.local.prefs.TokenManager
 import kotlinx.coroutines.launch
 
-class LoginViewModel : ViewModel() {
+class LoginViewModel(
+    private val tokenManager: TokenManager
+) : ViewModel() {
 
     private val _loginState = MutableLiveData<LoginState>()
     val loginState: LiveData<LoginState> = _loginState
@@ -24,6 +27,7 @@ class LoginViewModel : ViewModel() {
                 if (response.isSuccessful) {
                     val loginResponse = response.body()
                     if (loginResponse?.code == "SUCCESS" && loginResponse.access_token != null) {
+                        tokenManager.saveToken(loginResponse.access_token)
                         _loginState.value = LoginState.Success(loginResponse.access_token)
                     } else {
                         _loginState.value = LoginState.Error(

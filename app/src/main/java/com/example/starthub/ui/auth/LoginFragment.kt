@@ -12,6 +12,8 @@ import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import com.example.starthub.R
 import com.example.starthub.viewmodel.LoginViewModel
+import com.example.starthub.data.local.prefs.TokenManager
+import com.example.starthub.viewmodel.LoginViewModelFactory
 
 class LoginFragment : Fragment() {
 
@@ -40,7 +42,10 @@ class LoginFragment : Fragment() {
         registerLink = view.findViewById(R.id.register_link)
         errorTextView = view.findViewById(R.id.error_text)
 
-        loginViewModel = ViewModelProvider(this).get(LoginViewModel::class.java)
+        //loginViewModel = ViewModelProvider(this).get(LoginViewModel::class.java)
+        val tokenManager = TokenManager(requireContext())
+        val factory = LoginViewModelFactory(tokenManager)
+        loginViewModel = ViewModelProvider(this, factory)[LoginViewModel::class.java]
 
         loginButton.setOnClickListener {
             performLogin()
@@ -84,6 +89,11 @@ class LoginFragment : Fragment() {
                     errorTextView.text = "Login successful!"
                     errorTextView.visibility = View.VISIBLE
                     Toast.makeText(requireContext(), "Welcome!", Toast.LENGTH_SHORT).show()
+
+                    parentFragmentManager.beginTransaction()
+                        .replace(R.id.fragment_container, CatalogueFragment())
+                        .addToBackStack(null)
+                        .commit()
                 }
                 is LoginViewModel.LoginState.Error -> {
                     loginButton.isEnabled = true
