@@ -14,6 +14,9 @@ import com.example.starthub.R
 import com.example.starthub.viewmodel.LoginViewModel
 import com.example.starthub.data.local.prefs.TokenManager
 import com.example.starthub.viewmodel.LoginViewModelFactory
+import com.example.starthub.ui.catalogue.CatalogueFragment
+
+
 
 class LoginFragment : Fragment() {
 
@@ -87,7 +90,6 @@ class LoginFragment : Fragment() {
                 is LoginViewModel.LoginState.Success -> {
                     loginButton.isEnabled = true
                     errorTextView.text = "Login successful!"
-                    errorTextView.visibility = View.VISIBLE
                     Toast.makeText(requireContext(), "Welcome!", Toast.LENGTH_SHORT).show()
 
                     parentFragmentManager.beginTransaction()
