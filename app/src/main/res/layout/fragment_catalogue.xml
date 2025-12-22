@@ -13,7 +13,21 @@
         android:textStyle="bold"
         android:layout_marginBottom="16dp" />
 
-    <RecyclerView
+    <ProgressBar
+        android:id="@+id/loading_bar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:visibility="gone" />
+
+    <TextView
+        android:id="@+id/error_text"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textSize="16sp"
+        android:textColor="#FF0000"
+        android:visibility="gone" />
+
+    <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/projects_recycler"
         android:layout_width="match_parent"
         android:layout_height="match_parent" />
