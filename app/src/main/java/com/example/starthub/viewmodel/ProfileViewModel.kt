@@ -6,6 +6,7 @@ import androidx.lifecycle.viewModelScope
 import com.example.starthub.data.local.prefs.TokenManager
 import com.example.starthub.data.remote.api.RetrofitClient
 import com.example.starthub.data.remote.dto.UserProfileDto
+import com.example.starthub.data.repository.ProfileRepository
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.launch
@@ -25,14 +26,23 @@ class ProfileViewModel(private val context: Context) : ViewModel() {
             _isLoading.value = true
             try {
                 val response = RetrofitClient.apiService.getUserProfile()
+
+                val repository = ProfileRepository(context)
+                repository.saveProfile(response)
+
                 _user.value = response
             } catch (e: Exception) {
+                val repository = ProfileRepository(context)
+                repository.getProfile().collect { cachedProfile ->
+                    _user.value = cachedProfile
+                }
                 e.printStackTrace()
             } finally {
                 _isLoading.value = false
             }
         }
     }
+
 
     fun logout() {
         viewModelScope.launch {
