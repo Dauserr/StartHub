@@ -10,6 +10,7 @@ import android.widget.TextView
 import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
+import com.example.starthub.MainActivity
 import com.example.starthub.R
 import com.example.starthub.viewmodel.LoginViewModel
 import com.example.starthub.data.local.prefs.TokenManager
@@ -33,7 +34,7 @@ class LoginFragment : Fragment() {
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        return inflater.inflate(R.layout.fragment_login, container, false)
+        return inflater.inflate(R.layout.activity_login, container, false)
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
@@ -91,6 +92,8 @@ class LoginFragment : Fragment() {
                     loginButton.isEnabled = true
                     errorTextView.text = "Login successful!"
                     Toast.makeText(requireContext(), "Welcome!", Toast.LENGTH_SHORT).show()
+
+                    (requireActivity() as MainActivity).showBottomNav()
 
                     parentFragmentManager.beginTransaction()
                         .replace(R.id.fragment_container, CatalogueFragment())

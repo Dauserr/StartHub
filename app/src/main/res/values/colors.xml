@@ -1,10 +1,32 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <color name="purple_200">#FFBB86FC</color>
-    <color name="purple_500">#FF6200EE</color>
-    <color name="purple_700">#FF3700B3</color>
-    <color name="teal_200">#FF03DAC5</color>
-    <color name="teal_700">#FF018786</color>
-    <color name="black">#FF000000</color>
-    <color name="white">#FFFFFFFF</color>
+    <!-- Primary Colors -->
+    <color name="colorPrimary">#1E3A5F</color>
+    <color name="colorPrimaryDark">#0A1628</color>
+    <color name="colorAccent">#4FC3F7</color>
+
+    <!-- Background Colors -->
+    <color name="background_dark">#000000</color>
+    <color name="background_dark_secondary">#0A1628</color>
+    <color name="background_card">#1A2332</color>
+    <color name="background_card_dark">#1E3A5F</color>
+
+    <!-- Text Colors -->
+    <color name="text_white">#FFFFFF</color>
+    <color name="text_white_secondary">#B0FFFFFF</color>
+    <color name="text_gray">#666666</color>
+    <color name="text_dark">#333333</color>
+
+    <!-- Button Colors -->
+    <color name="button_primary">#1E3A5F</color>
+    <color name="button_accent">#4FC3F7</color>
+    <color name="button_success">#00C853</color>
+
+    <!-- Navigation Colors -->
+    <color name="bottom_nav_selected">#4FC3F7</color>
+    <color name="bottom_nav_unselected">#80FFFFFF</color>
+
+    <!-- Gradient -->
+    <color name="gradient_start">#0A1628</color>
+    <color name="gradient_end">#1A2332</color>
 </resources>

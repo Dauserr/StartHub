@@ -1,3 +1,79 @@
+<?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="app_name">StartHub</string>
+    <!-- App Name -->
+    <string name="app_name">StartApp</string>
+
+    <!-- Navigation -->
+    <string name="nav_main">Главная</string>
+    <string name="nav_catalogue">Каталог</string>
+    <string name="nav_profile">Профиль</string>
+
+    <!-- Authentication -->
+    <string name="email_label">Почта</string>
+    <string name="email_hint">Электронный адрес</string>
+    <string name="password_label">Пароль</string>
+    <string name="password_hint">Введите пароль</string>
+    <string name="password_create_hint">придумайте пароль</string>
+    <string name="password_confirm_hint">повторите пароль</string>
+    <string name="forgot_password">Забыли пароль?</string>
+    <string name="login_button">Войти</string>
+    <string name="create_account_button">Создать аккаунт</string>
+    <string name="no_account">Еще нет аккаунта?</string>
+    <string name="have_account">Уже есть аккаунт?</string>
+    <string name="registration_link">Регистрация</string>
+    <string name="login_link">Назад</string>
+
+    <!-- Main Page -->
+    <string name="language_ru">Рус</string>
+    <string name="hero_title">Воплощайте мечты в реальность вместе с нами!</string>
+    <string name="hero_description">Мы поможем вам найти единомышленников, ресурсы и поддержку для воплощения вашей идеи в жизнь</string>
+    <string name="explore_catalog">Исследовать проекты</string>
+    <string name="why_we_are_here">ПОЧЕМУ МЫ ЗДЕСЬ?</string>
+    <string name="support_title">ПОДДЕРЖИВАЙ</string>
+    <string name="support_description">Размещайте свои идеи и проекты, чтобы привлечь внимание инвесторов и получить необходимые ресурсы. Мы помогаем донести ваши замыслы до тех, кто готов вложить свой капитал для их осуществления</string>
+    <string name="create_title">СОЗДАВАЙ</string>
+    <string name="create_description">Запускайте свои идеи, воплощайте их в проекты и делитесь ими с миром. Мы предоставляем все необходимые инструменты и платформу для того, чтобы ваша идея стала реальностью</string>
+    <string name="mission_text">Мы — не просто сервис. Мы — инструмент перемен.</string>
+    <string name="our_values">Наши ценности</string>
+    <string name="value_openness">Открытость</string>
+    <string name="value_community">Сообщество</string>
+    <string name="value_support">Поддержка</string>
+    <string name="value_inspiration">Вдохновение</string>
+
+    <!-- Catalogue -->
+    <string name="catalogue_title">Каталог</string>
+
+    <!-- Profile -->
+    <string name="my_profile">Мой профиль</string>
+    <string name="edit_profile">Редактировать профиль</string>
+    <string name="my_projects">Мои проекты</string>
+    <string name="projects_description">Здесь находятся проекты, в которых вы участвуете на данный момент.</string>
+    <string name="logout">Выйти</string>
+
+    <!-- Project Detail -->
+    <string name="back">Назад</string>
+    <string name="share">Поделиться</string>
+    <string name="about_project">О проекте</string>
+    <string name="goals_and_tasks">Цели и задачи</string>
+    <string name="project_team">Команда проекта</string>
+    <string name="crowdfunding">Краудфандинг</string>
+    <string name="expand">Развернуть</string>
+    <string name="current_progress">Текущий прогресс</string>
+    <string name="collected">Собрано</string>
+    <string name="goal">Цель</string>
+    <string name="support_project">Поддержать проект</string>
+    <string name="social_links">Социальные сети проекта</string>
+    <string name="facebook">Facebook</string>
+    <string name="instagram">Instagram</string>
+    <string name="linkedin">LinkedIn</string>
+
+    <!-- Content Descriptions -->
+    <string name="app_logo">Логотип приложения</string>
+    <string name="chat_icon">Иконка чата</string>
+    <string name="support_icon">Иконка поддержки</string>
+    <string name="create_icon">Иконка создания</string>
+    <string name="home_icon">Иконка дома</string>
+    <string name="section_image">Изображение секции</string>
+    <string name="project_image">Изображение проекта</string>
+    <string name="view_project">Просмотреть проект</string>
 </resources>

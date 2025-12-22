@@ -1,6 +1,7 @@
 package com.example.starthub
 
 import android.os.Bundle
+import android.view.View
 import androidx.appcompat.app.AppCompatActivity
 import com.example.starthub.data.local.prefs.TokenManager
 import com.example.starthub.data.remote.api.RetrofitClient
@@ -66,5 +67,9 @@ class MainActivity : AppCompatActivity() {
         supportFragmentManager.beginTransaction()
             .replace(R.id.fragment_container, ProfileFragment())
             .commit()
+    }
+
+    fun showBottomNav() {
+        findViewById<BottomNavigationView>(R.id.bottom_nav).visibility = View.VISIBLE
     }
 }
