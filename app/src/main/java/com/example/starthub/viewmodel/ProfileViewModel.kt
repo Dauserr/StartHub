@@ -17,6 +17,9 @@ class ProfileViewModel(private val context: Context) : ViewModel() {
     private val _isLoading = MutableStateFlow(false)
     val isLoading: StateFlow<Boolean> = _isLoading
 
+    private val _logoutSuccess = MutableStateFlow(false)
+    val logoutSuccess: StateFlow<Boolean> = _logoutSuccess
+
     fun fetchUserProfile() {
         viewModelScope.launch {
             _isLoading.value = true
@@ -33,8 +36,12 @@ class ProfileViewModel(private val context: Context) : ViewModel() {
 
     fun logout() {
         viewModelScope.launch {
-            TokenManager(context).clearAll()
-            // TODO: Navigate to LoginFragment here
+            try {
+                TokenManager(context).clearAll()
+                _logoutSuccess.value = true
+            } catch (e: Exception) {
+                e.printStackTrace()
+            }
         }
     }
 }
