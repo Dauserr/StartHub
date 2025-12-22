@@ -11,6 +11,7 @@ import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.starthub.R
+import com.example.starthub.ui.auth.LoginFragment
 import com.example.starthub.viewmodel.CatalogueViewModel
 
 class CatalogueFragment : Fragment() {
@@ -63,6 +64,11 @@ class CatalogueFragment : Fragment() {
                     projectsRecycler.visibility = View.GONE
                     errorText.visibility = View.VISIBLE
                     errorText.text = state.message
+                }
+                is CatalogueViewModel.ProjectsState.TokenExpired -> {
+                    requireActivity().supportFragmentManager.beginTransaction()
+                        .replace(R.id.fragment_container, LoginFragment())
+                        .commit()
                 }
             }
         }

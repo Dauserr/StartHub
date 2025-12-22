@@ -9,7 +9,7 @@ data class ProjectDto(
     val media: List<String>?,
     val categories: List<CategoryDto>?,
     val company: CompanyDto?,
-    val user: UserDto?,
+    val user: ProjectUserDto?,
     val funding_model: FundingModelDto?,
     val goal_sum: Double,
     val current_sum: Double,
@@ -41,7 +41,7 @@ data class FounderDto(
     val description: String
 )
 
-data class UserDto(
+data class ProjectUserDto(
     val id: Int,
     val first_name: String,
     val last_name: String,

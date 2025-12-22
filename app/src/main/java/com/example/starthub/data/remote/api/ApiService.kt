@@ -5,6 +5,8 @@ import com.example.starthub.data.remote.dto.LoginResponse
 import com.example.starthub.data.remote.dto.RegisterRequest
 import com.example.starthub.data.remote.dto.RegisterResponse
 import com.example.starthub.data.remote.dto.ProjectDto
+import com.example.starthub.data.remote.dto.UserProfileDto
+
 import retrofit2.Response
 import retrofit2.http.Body
 import retrofit2.http.GET
@@ -30,4 +32,7 @@ interface ApiService {//retrofit uses interface
 
     @GET("projects/{id}/")
     suspend fun getProject(@Path("id") projectId: Int): Response<ProjectDto>
+
+    @GET("users/me/")
+    suspend fun getUserProfile(): UserProfileDto
 }
