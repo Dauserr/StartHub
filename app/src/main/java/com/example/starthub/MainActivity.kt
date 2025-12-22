@@ -17,11 +17,12 @@ class MainActivity : AppCompatActivity() {
         setContentView(R.layout.activity_main)
 
         val tokenManager = TokenManager(this)
+
+        RetrofitClient.setContextProvider { this }
         RetrofitClient.setTokenProvider {
-            runBlocking {
-                tokenManager.getToken().first()
-            }
+            runBlocking { tokenManager.getToken().first() }
         }
+
 
         if (savedInstanceState == null) {
             val token = runBlocking { tokenManager.getToken().first() }
