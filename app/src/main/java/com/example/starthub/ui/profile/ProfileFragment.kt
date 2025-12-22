@@ -11,6 +11,7 @@ import androidx.fragment.app.viewModels
 import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.lifecycleScope
 import com.example.starthub.R
+import com.example.starthub.ui.auth.LoginFragment
 import kotlinx.coroutines.launch
 
 class ProfileFragment : Fragment() {
@@ -38,27 +39,35 @@ class ProfileFragment : Fragment() {
         val tvEmail = view.findViewById<TextView>(R.id.tvEmail)
         val tvDescription = view.findViewById<TextView>(R.id.tvDescription)
         val tvPhone = view.findViewById<TextView>(R.id.tvPhone)
+        val tvUserId = view.findViewById<TextView>(R.id.tvUserId)
         val btnLogout = view.findViewById<Button>(R.id.btnLogout)
 
-        // Observe user data
         lifecycleScope.launch {
             viewModel.user.collect { user ->
                 if (user != null) {
                     tvName.text = "${user.first_name} ${user.last_name}"
-                    tvEmail.text = user.email
-                    tvDescription.text = user.description ?: "No bio"
-                    tvPhone.text = user.phone_numbers.firstOrNull() ?: "No phone"
+                    tvEmail.text = "Email: ${user.email}"
+                    tvDescription.text = "Bio: ${user.description ?: "No bio added"}"
+                    tvPhone.text = "Phone: ${user.phone_numbers.firstOrNull() ?: "No phone"}"
+                    tvUserId.text = "ID: ${user.id}"
+                }
+            }
+        }
+        lifecycleScope.launch {
+            viewModel.logoutSuccess.collect { success ->
+                if (success) {
+                    requireActivity().supportFragmentManager.beginTransaction()
+                        .replace(R.id.fragment_container, LoginFragment())
+                        .commit()
                 }
             }
         }
 
-        // Logout button
         btnLogout.setOnClickListener {
             viewModel.logout()
-            // TODO: Navigate to LoginFragment
         }
 
-        // Fetch profile on load
         viewModel.fetchUserProfile()
     }
+
 }

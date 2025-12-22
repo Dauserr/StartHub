@@ -36,6 +36,14 @@
         android:layout_height="wrap_content"
         android:text="---"
         android:textSize="14sp"
+        android:layout_marginBottom="8dp" />
+
+    <TextView
+        android:id="@+id/tvUserId"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="---"
+        android:textSize="14sp"
         android:layout_marginBottom="32dp" />
 
     <Button
