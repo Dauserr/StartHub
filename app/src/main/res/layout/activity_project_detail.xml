@@ -1,0 +1,434 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.coordinatorlayout.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#000000"
+    tools:context="ui.project.ProjectDetailActivity">
+
+    <com.google.android.material.appbar.AppBarLayout
+        android:id="@+id/appBarLayout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="#000000"
+        android:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar"
+        app:elevation="0dp">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:padding="16dp">
+
+            <!-- Back Button -->
+            <ImageButton
+                android:id="@+id/backButton"
+                android:layout_width="40dp"
+                android:layout_height="40dp"
+                android:background="?attr/selectableItemBackgroundBorderless"
+                android:src="@drawable/ic_arrow_back"
+                android:contentDescription="@string/back"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:tint="@android:color/white" />
+
+            <!-- Project Title in Header -->
+            <TextView
+                android:id="@+id/headerTitleTextView"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="12dp"
+                android:layout_marginEnd="12dp"
+                android:fontFamily="@font/roboto_bold"
+                android:textColor="@android:color/white"
+                android:textSize="18sp"
+                android:maxLines="1"
+                android:ellipsize="end"
+                app:layout_constraintStart_toEndOf="@id/backButton"
+                app:layout_constraintEnd_toStartOf="@id/shareButton"
+                app:layout_constraintTop_toTopOf="@id/backButton"
+                app:layout_constraintBottom_toBottomOf="@id/backButton"
+                tools:text="Ata-Jurt" />
+
+            <!-- Share Button -->
+            <ImageButton
+                android:id="@+id/shareButton"
+                android:layout_width="40dp"
+                android:layout_height="40dp"
+                android:background="?attr/selectableItemBackgroundBorderless"
+                android:src="@drawable/ic_share"
+                android:contentDescription="@string/share"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:tint="@android:color/white" />
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+    </com.google.android.material.appbar.AppBarLayout>
+
+    <androidx.core.widget.NestedScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        app:layout_behavior="@string/appbar_scrolling_view_behavior">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <!-- Project Image -->
+            <ImageView
+                android:id="@+id/projectImageView"
+                android:layout_width="match_parent"
+                android:layout_height="250dp"
+                android:scaleType="centerCrop"
+                android:contentDescription="@string/project_image"
+                tools:src="@drawable/img_project_placeholder" />
+
+            <!-- Content Container -->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:padding="20dp">
+
+                <!-- Project Title -->
+                <TextView
+                    android:id="@+id/projectTitleTextView"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="@font/roboto_bold"
+                    android:textColor="@android:color/white"
+                    android:textSize="24sp"
+                    android:layout_marginBottom="8dp"
+                    tools:text="Ata-Jurt" />
+
+                <!-- Author Name -->
+                <TextView
+                    android:id="@+id/authorNameTextView"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="@font/roboto_regular"
+                    android:textColor="#B0FFFFFF"
+                    android:textSize="14sp"
+                    android:layout_marginBottom="8dp"
+                    tools:text="Мейрим Досанова" />
+
+                <!-- Category Tag -->
+                <com.google.android.material.chip.Chip
+                    android:id="@+id/categoryChip"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="24dp"
+                    android:textColor="@android:color/white"
+                    app:chipBackgroundColor="#1E3A5F"
+                    app:chipStrokeWidth="0dp"
+                    tools:text="Технология и инновации" />
+
+                <!-- About Project Section -->
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:background="#1A2332"
+                    android:padding="16dp"
+                    android:layout_marginBottom="16dp">
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:fontFamily="@font/roboto_bold"
+                        android:text="@string/about_project"
+                        android:textColor="@android:color/white"
+                        android:textSize="16sp"
+                        android:layout_marginBottom="8dp" />
+
+                    <TextView
+                        android:id="@+id/projectDescriptionTextView"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:fontFamily="@font/roboto_regular"
+                        android:textColor="#B0FFFFFF"
+                        android:textSize="14sp"
+                        android:lineSpacingExtra="2dp"
+                        tools:text="«Магнетик-Арена» — бұл әлемдегі алғашқы саңылауын бағыттауға арналған мәжбүрлеп электромагниттік тіреумен жабдықталған жасанды гравитация кемеге арналған трек. Онда қолданылатыр озондырушық электромагниттік көмек..." />
+                </LinearLayout>
+
+                <!-- Goals and Tasks Section -->
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:background="#1A2332"
+                    android:padding="16dp"
+                    android:layout_marginBottom="16dp">
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:fontFamily="@font/roboto_bold"
+                        android:text="@string/goals_and_tasks"
+                        android:textColor="@android:color/white"
+                        android:textSize="16sp"
+                        android:layout_marginBottom="8dp" />
+
+                    <TextView
+                        android:id="@+id/goalsTextView"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:fontFamily="@font/roboto_regular"
+                        android:textColor="#B0FFFFFF"
+                        android:textSize="14sp"
+                        android:lineSpacingExtra="2dp"
+                        tools:text="• Разработка комплексной программной платформы для автоматизации бизнеса\n• Внедрение аналитических систем и отчётности на базе ИИ\n• Создание масштабируемых облачных инфраструктур\n• Установление партнерских отношений с ведущими технологическими компаниями" />
+                </LinearLayout>
+
+                <!-- Project Team Section -->
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:background="#1A2332"
+                    android:padding="16dp"
+                    android:layout_marginBottom="16dp">
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:fontFamily="@font/roboto_bold"
+                        android:text="@string/project_team"
+                        android:textColor="@android:color/white"
+                        android:textSize="16sp"
+                        android:layout_marginBottom="12dp" />
+
+                    <!-- Team Members RecyclerView -->
+                    <androidx.recyclerview.widget.RecyclerView
+                        android:id="@+id/teamMembersRecyclerView"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:nestedScrollingEnabled="false"
+                        app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+                        tools:listitem="@layout/item_team_member" />
+                </LinearLayout>
+
+                <!-- Crowdfunding Section -->
+                <LinearLayout
+                    android:id="@+id/crowdfundingLayout"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:background="#1A2332"
+                    android:padding="16dp"
+                    android:layout_marginBottom="16dp">
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal"
+                        android:gravity="center_vertical"
+                        android:layout_marginBottom="12dp">
+
+                        <TextView
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:fontFamily="@font/roboto_bold"
+                            android:text="@string/crowdfunding"
+                            android:textColor="@android:color/white"
+                            android:textSize="16sp" />
+
+                        <ImageView
+                            android:id="@+id/crowdfundingToggle"
+                            android:layout_width="24dp"
+                            android:layout_height="24dp"
+                            android:src="@drawable/ic_expand_more"
+                            android:contentDescription="@string/expand"
+                            app:tint="@android:color/white" />
+                    </LinearLayout>
+
+                    <!-- Funding Info (Initially Collapsed) -->
+                    <LinearLayout
+                        android:id="@+id/fundingInfoLayout"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical"
+                        android:visibility="gone">
+
+                        <!-- Funding Model -->
+                        <androidx.cardview.widget.CardView
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginBottom="8dp"
+                            app:cardBackgroundColor="#2A3A4A"
+                            app:cardCornerRadius="8dp"
+                            app:cardElevation="0dp">
+
+                            <TextView
+                                android:id="@+id/fundingModelTextView"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:fontFamily="@font/roboto_regular"
+                                android:padding="12dp"
+                                android:textColor="@android:color/white"
+                                android:textSize="14sp"
+                                tools:text="Модель финансирования:\nEquity Crowdfunding" />
+                        </androidx.cardview.widget.CardView>
+
+                        <!-- Current Progress -->
+                        <TextView
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:fontFamily="@font/roboto_medium"
+                            android:text="@string/current_progress"
+                            android:textColor="@android:color/white"
+                            android:textSize="14sp"
+                            android:layout_marginTop="8dp"
+                            android:layout_marginBottom="8dp" />
+
+                        <TextView
+                            android:id="@+id/progressPercentageTextView"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:fontFamily="@font/roboto_bold"
+                            android:textColor="#4FC3F7"
+                            android:textSize="24sp"
+                            android:layout_marginBottom="8dp"
+                            tools:text="0%" />
+
+                        <ProgressBar
+                            android:id="@+id/fundingProgressBar"
+                            style="?android:attr/progressBarStyleHorizontal"
+                            android:layout_width="match_parent"
+                            android:layout_height="8dp"
+                            android:layout_marginBottom="16dp"
+                            android:progressTint="#4FC3F7"
+                            android:progressBackgroundTint="#2A3A4A"
+                            tools:progress="0" />
+
+                        <!-- Funding Goals -->
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:orientation="horizontal"
+                            android:layout_marginBottom="8dp">
+
+                            <TextView
+                                android:layout_width="0dp"
+                                android:layout_height="wrap_content"
+                                android:layout_weight="1"
+                                android:fontFamily="@font/roboto_regular"
+                                android:text="@string/collected"
+                                android:textColor="#B0FFFFFF"
+                                android:textSize="14sp" />
+
+                            <TextView
+                                android:id="@+id/collectedAmountTextView"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:fontFamily="@font/roboto_bold"
+                                android:textColor="@android:color/white"
+                                android:textSize="14sp"
+                                tools:text="₸0" />
+                        </LinearLayout>
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:orientation="horizontal"
+                            android:layout_marginBottom="16dp">
+
+                            <TextView
+                                android:layout_width="0dp"
+                                android:layout_height="wrap_content"
+                                android:layout_weight="1"
+                                android:fontFamily="@font/roboto_regular"
+                                android:text="@string/goal"
+                                android:textColor="#B0FFFFFF"
+                                android:textSize="14sp" />
+
+                            <TextView
+                                android:id="@+id/goalAmountTextView"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:fontFamily="@font/roboto_bold"
+                                android:textColor="@android:color/white"
+                                android:textSize="14sp"
+                                tools:text="₸1,000,000" />
+                        </LinearLayout>
+
+                        <!-- Support Button -->
+                        <com.google.android.material.button.MaterialButton
+                            android:id="@+id/supportProjectButton"
+                            android:layout_width="match_parent"
+                            android:layout_height="48dp"
+                            android:backgroundTint="#00C853"
+                            android:fontFamily="@font/roboto_medium"
+                            android:text="@string/support_project"
+                            android:textAllCaps="false"
+                            android:textColor="@android:color/white"
+                            android:textSize="14sp"
+                            app:cornerRadius="8dp" />
+                    </LinearLayout>
+                </LinearLayout>
+
+                <!-- Social Links Section -->
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:background="#1A2332"
+                    android:padding="16dp"
+                    android:layout_marginBottom="80dp">
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:fontFamily="@font/roboto_bold"
+                        android:text="@string/social_links"
+                        android:textColor="@android:color/white"
+                        android:textSize="16sp"
+                        android:layout_marginBottom="12dp" />
+
+                    <LinearLayout
+                        android:id="@+id/socialLinksLayout"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal"
+                        android:gravity="center">
+
+                        <ImageButton
+                            android:id="@+id/facebookButton"
+                            android:layout_width="48dp"
+                            android:layout_height="48dp"
+                            android:layout_margin="8dp"
+                            android:background="?attr/selectableItemBackgroundBorderless"
+                            android:src="@drawable/ic_facebook"
+                            android:contentDescription="@string/facebook"
+                            app:tint="@android:color/white" />
+
+                        <ImageButton
+                            android:id="@+id/instagramButton"
+                            android:layout_width="48dp"
+                            android:layout_height="48dp"
+                            android:layout_margin="8dp"
+                            android:background="?attr/selectableItemBackgroundBorderless"
+                            android:src="@drawable/ic_instagram"
+                            android:contentDescription="@string/instagram"
+                            app:tint="@android:color/white" />
+
+                        <ImageButton
+                            android:id="@+id/linkedinButton"
+                            android:layout_width="48dp"
+                            android:layout_height="48dp"
+                            android:layout_margin="8dp"
+                            android:background="?attr/selectableItemBackgroundBorderless"
+                            android:src="@drawable/ic_linkedin"
+                            android:contentDescription="@string/linkedin"
+                            app:tint="@android:color/white" />
+                    </LinearLayout>
+                </LinearLayout>
+
+            </LinearLayout>
+        </LinearLayout>
+    </androidx.core.widget.NestedScrollView>
+
+</androidx.coordinatorlayout.widget.CoordinatorLayout>

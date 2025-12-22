@@ -1,0 +1,396 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.coordinatorlayout.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#0A1628"
+    tools:context=".MainActivity">
+
+    <com.google.android.material.appbar.AppBarLayout
+        android:id="@+id/appBarLayout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="#0A1628"
+        android:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar"
+        app:elevation="0dp">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:padding="16dp">
+
+            <!-- Logo and App Name -->
+            <LinearLayout
+                android:id="@+id/logoLayout"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:gravity="center_vertical"
+                android:orientation="horizontal"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent">
+
+                <ImageView
+                    android:layout_width="32dp"
+                    android:layout_height="32dp"
+                    android:src="@drawable/ic_logo"
+                    android:contentDescription="@string/app_logo" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="8dp"
+                    android:fontFamily="@font/roboto_medium"
+                    android:text="@string/app_name"
+                    android:textColor="@android:color/white"
+                    android:textSize="20sp" />
+            </LinearLayout>
+
+            <!-- Language Selector -->
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/languageButton"
+                style="@style/Widget.MaterialComponents.Button.OutlinedButton"
+                android:layout_width="wrap_content"
+                android:layout_height="36dp"
+                android:fontFamily="@font/roboto_regular"
+                android:text="@string/language_ru"
+                android:textAllCaps="false"
+                android:textColor="@android:color/white"
+                android:textSize="14sp"
+                app:cornerRadius="8dp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:strokeColor="@android:color/white"
+                app:strokeWidth="1dp" />
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+    </com.google.android.material.appbar.AppBarLayout>
+
+    <androidx.core.widget.NestedScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        app:layout_behavior="@string/appbar_scrolling_view_behavior">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:padding="16dp">
+
+            <!-- Hero Section -->
+            <androidx.cardview.widget.CardView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="24dp"
+                app:cardBackgroundColor="#1E3A5F"
+                app:cardCornerRadius="16dp"
+                app:cardElevation="4dp">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:padding="24dp">
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:fontFamily="@font/roboto_bold"
+                        android:text="@string/hero_title"
+                        android:textColor="@android:color/white"
+                        android:textSize="24sp"
+                        android:lineSpacingExtra="4dp"
+                        android:layout_marginBottom="16dp" />
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:fontFamily="@font/roboto_regular"
+                        android:text="@string/hero_description"
+                        android:textColor="#B0FFFFFF"
+                        android:textSize="14sp"
+                        android:lineSpacingExtra="2dp"
+                        android:layout_marginBottom="24dp" />
+
+                    <com.google.android.material.button.MaterialButton
+                        android:id="@+id/exploreCatalogButton"
+                        android:layout_width="wrap_content"
+                        android:layout_height="48dp"
+                        android:backgroundTint="#4FC3F7"
+                        android:fontFamily="@font/roboto_medium"
+                        android:text="@string/explore_catalog"
+                        android:textAllCaps="false"
+                        android:textColor="@android:color/white"
+                        android:textSize="14sp"
+                        app:cornerRadius="8dp"
+                        app:icon="@drawable/ic_arrow_forward"
+                        app:iconGravity="end"
+                        app:iconTint="@android:color/white" />
+
+                    <ImageView
+                        android:layout_width="48dp"
+                        android:layout_height="48dp"
+                        android:layout_gravity="end"
+                        android:layout_marginTop="-24dp"
+                        android:src="@drawable/ic_chat"
+                        android:contentDescription="@string/chat_icon" />
+                </LinearLayout>
+            </androidx.cardview.widget.CardView>
+
+            <!-- Why We Are Here Section -->
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/roboto_bold"
+                android:text="@string/why_we_are_here"
+                android:textColor="@android:color/white"
+                android:textSize="20sp"
+                android:layout_marginBottom="16dp" />
+
+            <!-- Support Card -->
+            <androidx.cardview.widget.CardView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="16dp"
+                app:cardBackgroundColor="#000000"
+                app:cardCornerRadius="16dp"
+                app:cardElevation="0dp">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:padding="24dp">
+
+                    <ImageView
+                        android:layout_width="48dp"
+                        android:layout_height="48dp"
+                        android:layout_marginBottom="16dp"
+                        android:src="@drawable/ic_support"
+                        android:contentDescription="@string/support_icon" />
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:fontFamily="@font/roboto_bold"
+                        android:text="@string/support_title"
+                        android:textColor="@android:color/white"
+                        android:textSize="18sp"
+                        android:layout_marginBottom="8dp" />
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:fontFamily="@font/roboto_regular"
+                        android:text="@string/support_description"
+                        android:textColor="#B0FFFFFF"
+                        android:textSize="14sp"
+                        android:lineSpacingExtra="2dp" />
+                </LinearLayout>
+            </androidx.cardview.widget.CardView>
+
+            <!-- Create Card -->
+            <androidx.cardview.widget.CardView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="16dp"
+                app:cardBackgroundColor="#1E3A5F"
+                app:cardCornerRadius="16dp"
+                app:cardElevation="0dp">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:padding="24dp">
+
+                    <ImageView
+                        android:layout_width="48dp"
+                        android:layout_height="48dp"
+                        android:layout_marginBottom="16dp"
+                        android:src="@drawable/ic_create"
+                        android:contentDescription="@string/create_icon" />
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:fontFamily="@font/roboto_bold"
+                        android:text="@string/create_title"
+                        android:textColor="@android:color/white"
+                        android:textSize="18sp"
+                        android:layout_marginBottom="8dp" />
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:fontFamily="@font/roboto_regular"
+                        android:text="@string/create_description"
+                        android:textColor="#B0FFFFFF"
+                        android:textSize="14sp"
+                        android:lineSpacingExtra="2dp" />
+                </LinearLayout>
+            </androidx.cardview.widget.CardView>
+
+            <!-- Home Icon Card -->
+            <androidx.cardview.widget.CardView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="16dp"
+                app:cardBackgroundColor="#000000"
+                app:cardCornerRadius="16dp"
+                app:cardElevation="0dp">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:padding="24dp">
+
+                    <ImageView
+                        android:layout_width="48dp"
+                        android:layout_height="48dp"
+                        android:layout_marginBottom="16dp"
+                        android:src="@drawable/ic_home_feature"
+                        android:contentDescription="@string/home_icon" />
+                </LinearLayout>
+            </androidx.cardview.widget.CardView>
+
+            <!-- Mission Section -->
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/roboto_regular"
+                android:text="@string/mission_text"
+                android:textColor="#B0FFFFFF"
+                android:textSize="14sp"
+                android:lineSpacingExtra="2dp"
+                android:layout_marginBottom="24dp" />
+
+            <!-- Values Grid -->
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/roboto_bold"
+                android:text="@string/our_values"
+                android:textColor="@android:color/white"
+                android:textSize="20sp"
+                android:layout_marginBottom="16dp" />
+
+            <androidx.gridlayout.widget.GridLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="24dp"
+                app:columnCount="2"
+                app:rowCount="2">
+
+                <!-- Openness Card -->
+                <androidx.cardview.widget.CardView
+                    android:layout_width="0dp"
+                    android:layout_height="120dp"
+                    android:layout_margin="4dp"
+                    app:cardBackgroundColor="#000000"
+                    app:cardCornerRadius="12dp"
+                    app:cardElevation="0dp"
+                    app:layout_columnWeight="1">
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:fontFamily="@font/roboto_medium"
+                        android:gravity="center"
+                        android:text="@string/value_openness"
+                        android:textColor="@android:color/white"
+                        android:textSize="16sp" />
+                </androidx.cardview.widget.CardView>
+
+                <!-- Community Card -->
+                <androidx.cardview.widget.CardView
+                    android:layout_width="0dp"
+                    android:layout_height="120dp"
+                    android:layout_margin="4dp"
+                    app:cardBackgroundColor="#000000"
+                    app:cardCornerRadius="12dp"
+                    app:cardElevation="0dp"
+                    app:layout_columnWeight="1">
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:fontFamily="@font/roboto_medium"
+                        android:gravity="center"
+                        android:text="@string/value_community"
+                        android:textColor="@android:color/white"
+                        android:textSize="16sp" />
+                </androidx.cardview.widget.CardView>
+
+                <!-- Support Card -->
+                <androidx.cardview.widget.CardView
+                    android:layout_width="0dp"
+                    android:layout_height="120dp"
+                    android:layout_margin="4dp"
+                    app:cardBackgroundColor="#000000"
+                    app:cardCornerRadius="12dp"
+                    app:cardElevation="0dp"
+                    app:layout_columnWeight="1">
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:fontFamily="@font/roboto_medium"
+                        android:gravity="center"
+                        android:text="@string/value_support"
+                        android:textColor="@android:color/white"
+                        android:textSize="16sp" />
+                </androidx.cardview.widget.CardView>
+
+                <!-- Inspiration Card -->
+                <androidx.cardview.widget.CardView
+                    android:layout_width="0dp"
+                    android:layout_height="120dp"
+                    android:layout_margin="4dp"
+                    app:cardBackgroundColor="#000000"
+                    app:cardCornerRadius="12dp"
+                    app:cardElevation="0dp"
+                    app:layout_columnWeight="1">
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:fontFamily="@font/roboto_medium"
+                        android:gravity="center"
+                        android:text="@string/value_inspiration"
+                        android:textColor="@android:color/white"
+                        android:textSize="16sp" />
+                </androidx.cardview.widget.CardView>
+
+            </androidx.gridlayout.widget.GridLayout>
+
+            <!-- Image Sections (placeholders for actual images) -->
+            <ImageView
+                android:layout_width="match_parent"
+                android:layout_height="200dp"
+                android:layout_marginBottom="24dp"
+                android:scaleType="centerCrop"
+                android:src="@drawable/img_section_1"
+                android:contentDescription="@string/section_image" />
+
+            <ImageView
+                android:layout_width="match_parent"
+                android:layout_height="200dp"
+                android:layout_marginBottom="24dp"
+                android:scaleType="centerCrop"
+                android:src="@drawable/img_section_2"
+                android:contentDescription="@string/section_image" />
+
+            <ImageView
+                android:layout_width="match_parent"
+                android:layout_height="200dp"
+                android:layout_marginBottom="80dp"
+                android:scaleType="centerCrop"
+                android:src="@drawable/img_section_3"
+                android:contentDescription="@string/section_image" />
+
+        </LinearLayout>
+    </androidx.core.widget.NestedScrollView>
+
+</androidx.coordinatorlayout.widget.CoordinatorLayout>

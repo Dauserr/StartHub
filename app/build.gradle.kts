@@ -74,6 +74,7 @@ dependencies {
     // Room Database
     implementation(libs.androidx.room.runtime)
     implementation(libs.androidx.room.ktx)
+    implementation(libs.androidx.gridlayout)
     kapt(libs.androidx.room.compiler)
 
     // RecyclerView (for catalogue list)
