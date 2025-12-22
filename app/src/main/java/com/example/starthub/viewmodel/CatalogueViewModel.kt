@@ -7,7 +7,7 @@ import androidx.lifecycle.viewModelScope
 import com.example.starthub.data.remote.api.RetrofitClient
 import com.example.starthub.data.remote.dto.ProjectDto
 import kotlinx.coroutines.launch
-
+import retrofit2.HttpException
 class CatalogueViewModel : ViewModel() {
 
     private val _projectsState = MutableLiveData<ProjectsState>()
@@ -20,11 +20,20 @@ class CatalogueViewModel : ViewModel() {
             try {
                 val response = RetrofitClient.apiService.getProjects()
 
+
                 if (response.isSuccessful) {
                     val projects = response.body() ?: emptyList()
                     _projectsState.value = ProjectsState.Success(projects)
+                } else if (response.code() == 401) {
+                    _projectsState.value = ProjectsState.TokenExpired
                 } else {
                     _projectsState.value = ProjectsState.Error("Failed to load projects")
+                }
+            } catch (e: HttpException) {
+                if (e.code() == 401) {
+                    _projectsState.value = ProjectsState.TokenExpired
+                } else {
+                    _projectsState.value = ProjectsState.Error(e.message ?: "Unknown error")
                 }
             } catch (e: Exception) {
                 _projectsState.value = ProjectsState.Error(e.message ?: "Unknown error")
@@ -36,5 +45,6 @@ class CatalogueViewModel : ViewModel() {
         object Loading : ProjectsState()
         data class Success(val projects: List<ProjectDto>) : ProjectsState()
         data class Error(val message: String) : ProjectsState()
+        object TokenExpired : ProjectsState()
     }
 }
