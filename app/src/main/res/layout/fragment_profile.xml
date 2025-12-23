@@ -137,6 +137,18 @@
 
                 </LinearLayout>
             </androidx.cardview.widget.CardView>
+            <TextView
+                android:id="@+id/errorTextView"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="16dp"
+                android:padding="12dp"
+                android:background="#33FF0000"
+                android:textColor="#FF5252"
+                android:textSize="14sp"
+                android:gravity="center"
+                android:visibility="gone"
+                android:text="Ошибка загрузки профиля" />
 
         </LinearLayout>
     </androidx.core.widget.NestedScrollView>

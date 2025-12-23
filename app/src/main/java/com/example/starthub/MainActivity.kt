@@ -21,6 +21,14 @@ import kotlinx.coroutines.runBlocking
  * - Catalogue (project listing)
  * - Profile (user profile)
  *
+ * Features:
+ * - Token validation on startup
+ * - Bottom navigation management
+ * - Fragment switching
+ * - Logout handling
+ * - Token expiration handling
+ * - Proper back button behavior
+ *
  * If user is not authenticated, they are redirected to LoginActivity.
  */
 class MainActivity : AppCompatActivity() {
@@ -58,6 +66,8 @@ class MainActivity : AppCompatActivity() {
     /**
      * Setup the main UI components
      * Only called if user is authenticated
+     *
+     * @param savedInstanceState Bundle containing the activity's previously saved state
      */
     private fun setupUI(savedInstanceState: Bundle?) {
         // Initialize bottom navigation
@@ -77,6 +87,10 @@ class MainActivity : AppCompatActivity() {
 
     /**
      * Setup bottom navigation item selection listener
+     *
+     * Handles navigation between:
+     * - Catalogue (project listing)
+     * - Profile (user profile)
      */
     private fun setupBottomNavigation() {
         bottomNav.setOnItemSelectedListener { item ->
@@ -119,11 +133,18 @@ class MainActivity : AppCompatActivity() {
      *
      * This is called when:
      * - User is not authenticated (no token)
-     * - Token has expired
-     * - User logs out
+     * - Token has expired (401 error from API)
+     * - User logs out from ProfileFragment
      *
-     * Using FLAG_ACTIVITY_NEW_TASK | FLAG_ACTIVITY_CLEAR_TASK ensures
-     * the user cannot press back to return to MainActivity
+     * Using FLAG_ACTIVITY_NEW_TASK | FLAG_ACTIVITY_CLEAR_TASK ensures:
+     * - Start LoginActivity in a new task
+     * - Clear all activities in the current task
+     * - User cannot press back to return to MainActivity
+     *
+     * Called from:
+     * - onCreate() - if no token found
+     * - CatalogueFragment - when token expires
+     * - ProfileFragment - when user logs out
      */
     fun navigateToLoginActivity() {
         val intent = Intent(this, LoginActivity::class.java)
@@ -136,12 +157,18 @@ class MainActivity : AppCompatActivity() {
      * Handle user logout
      *
      * Called from ProfileFragment when user clicks logout button.
-     * Clears the authentication token and redirects to LoginActivity.
+     *
+     * Process:
+     * 1. Clear the authentication token from TokenManager
+     * 2. Navigate to LoginActivity
+     * 3. Clear the activity back stack
+     *
+     * This ensures the user must log in again to access the app.
      */
     fun handleLogout() {
         // Clear the authentication token
         runBlocking {
-            tokenManager.clearToken()
+            tokenManager.clearAll()
         }
 
         // Navigate to LoginActivity
@@ -149,16 +176,24 @@ class MainActivity : AppCompatActivity() {
     }
 
     /**
-     * Optional: Handle token expiration globally
-     * You can call this from your API error handler
+     * Handle token expiration globally
+     *
+     * Called from fragments when API returns 401 Unauthorized.
+     * This indicates the token has expired or is invalid.
+     *
+     * Process:
+     * 1. Clear the expired token
+     * 2. Navigate to LoginActivity
+     *
+     * Note: Toast message is optional - you can uncomment it if desired
      */
     fun handleTokenExpired() {
         // Clear the expired token
         runBlocking {
-            tokenManager.clearToken()
+            tokenManager.clearAll()
         }
 
-        // Show a message to the user (optional)
+        // Optional: Show a message to the user
         // Toast.makeText(this, "Сеанс истек. Пожалуйста, войдите снова.", Toast.LENGTH_SHORT).show()
 
         // Navigate to LoginActivity
@@ -166,12 +201,39 @@ class MainActivity : AppCompatActivity() {
     }
 
     /**
-     * Override onBackPressed to prevent going back to LoginActivity
-     * When user presses back in MainActivity, minimize the app instead
+     * Override back button behavior
+     *
+     * When user presses back in MainActivity:
+     * - Move app to background (minimize)
+     * - Don't close the app
+     * - Don't navigate back to LoginActivity
+     *
+     * This provides better UX - user can resume the app later
+     * without having to log in again.
      */
     @Deprecated("Deprecated in Java")
     override fun onBackPressed() {
-        // Move app to background instead of going back to LoginActivity
+        // Move app to background instead of closing
         moveTaskToBack(true)
     }
+
+    /**
+     * Handle activity resume
+     *
+     * Optional: You can add token validation here to check if token
+     * is still valid when user returns to the app after some time.
+     *
+     * Uncomment and implement if needed for extra security.
+     */
+    /*
+    override fun onResume() {
+        super.onResume()
+
+        // Optional: Validate token on resume
+        val token = runBlocking { tokenManager.getToken().first() }
+        if (token == null) {
+            navigateToLoginActivity()
+        }
+    }
+    */
 }

@@ -1,5 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <style name="Theme.StartHub" parent="Theme.AppCompat.Light.NoActionBar">
+    <!-- Change from Theme.AppCompat to Theme.MaterialComponents -->
+    <style name="Base.Theme.StartHub" parent="Theme.MaterialComponents.DayNight.NoActionBar">
+        <item name="colorPrimary">#1E3A5F</item>
+        <item name="colorPrimaryDark">#0A1628</item>
+        <item name="colorAccent">#4FC3F7</item>
     </style>
+
+    <style name="Theme.StartHub" parent="Base.Theme.StartHub" />
 </resources>
